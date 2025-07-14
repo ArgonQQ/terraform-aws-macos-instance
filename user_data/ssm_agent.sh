@@ -37,7 +37,7 @@ echo "Installing SSM agent"
 installer -pkg amazon-ssm-agent.pkg -target /
 
 # Configure SSM agent to run as specified user
-echo "Configuring SSM agent to run as ${ssm_run_as_user}"
+echo "Configuring SSM agent to run as $${ssm_run_as_user}"
 mkdir -p /var/lib/amazon/ssm/
 cat > /var/lib/amazon/ssm/amazon-ssm-agent.json << SSMCONFIG
 {
@@ -47,7 +47,7 @@ cat > /var/lib/amazon/ssm/amazon-ssm-agent.json << SSMCONFIG
     },
     "Ssm": {
         "RunAsEnabled": true,
-        "RunAsDefaultUser": "${ssm_run_as_user}"
+        "RunAsDefaultUser": "$${ssm_run_as_user}"
     }
 }
 SSMCONFIG
